@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create user</title>
+</head>
+<body>
+<h2>Create user</h2>
+<div>
+
+    <form th:method="POST" th:action="@{/admin/}" th:object="${user}">
+        <fieldset>
+            <legend>Info</legend>
+            <p>
+                <label th:for="firstName">First name</label>
+                <input type="text" name="firstName" th:id="firstName" th:value="${user.getFirstName()}">
+            </p>
+
+            <p>
+                <label th:for="lastName">Last name</label>
+                <input type="text" name="lastName" th:id="lastName" th:value="${user.getLastName()}">
+            </p>
+
+            <p>
+                <label th:for="email">Email</label>
+                <input type="text" name="email" th:id="email" th:value="${user.getEmail()}"><br/>
+            </p>
+
+            <p>
+                <label th:for="age">Age</label>
+                <input type="text" name="age" th:id="age" th:value="${user.getAge()}"><br/>
+            </p>
+
+            <p>
+                <label th:for="password">Password</label>
+                <input type="text" name="password" th:id="password" th:value="${user.getPassword()}"><br/>
+            </p>
+
+            <label>Role:
+                <select size="2" multiple name="roles" >
+                    <option value="1">USER</option>
+                    <option selected="selected" value="2">ADMIN</option>
+                </select>
+            </label>
+
+        </fieldset>
+        <button type="submit">Save user</button>
+    </form>
+    <br/>
+    <form th:action="@{/admin/}" th:method="get">
+        <button type="submit" class="btn btn-outline-danger">Back to list users</button>
+    </form>
+</div>
+</body>
+</html>
